@@ -1,10 +1,12 @@
 export default {
 	async fetch(request, env) {
 	  const url = new URL(request.url);
-	  
+  
 	  // ルートアクセス時のHTML表示
 	  if (url.pathname === '/') {
-		return new Response(html, {headers: {'Content-Type': 'text/html'}});
+		return new Response(html, {
+		  headers: { 'Content-Type': 'text/html; charset=UTF-8' }
+		});
 	  }
   
 	  // 変換処理
@@ -22,7 +24,7 @@ export default {
   
 		  let allItems = [];
 		  let nextPageToken = null;
-		  
+  
 		  do {
 			const apiUrl = new URL('https://www.googleapis.com/youtube/v3/playlistItems');
 			apiUrl.searchParams.set('part', 'snippet');
@@ -32,7 +34,6 @@ export default {
 			if (nextPageToken) apiUrl.searchParams.set('pageToken', nextPageToken);
   
 			const response = await fetch(apiUrl.toString());
-			
 			if (!response.ok) {
 			  const error = await response.json();
 			  return errorResponse(500, `YouTube APIエラー: ${error.error.message}`);
@@ -48,14 +49,14 @@ export default {
 		  const converted = {
 			tracks: allItems.map(item => ({
 			  mode: 1,
-			  title: item.snippet.title.replace(/[\u{0080}-\u{FFFF}]/gu, ''),
+			  title: item.snippet.title,
 			  url: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`
 			}))
 		  };
   
 		  return new Response(JSON.stringify(converted, null, 2), {
 			headers: {
-			  'Content-Type': 'application/json',
+			  'Content-Type': 'application/json; charset=UTF-8',
 			  'Content-Disposition': 'attachment; filename="playlist.json"'
 			}
 		  });
@@ -73,7 +74,7 @@ export default {
   function errorResponse(status, message) {
 	return new Response(JSON.stringify({ error: message }), {
 	  status,
-	  headers: { 'Content-Type': 'application/json' }
+	  headers: { 'Content-Type': 'application/json; charset=UTF-8' }
 	});
   }
   
