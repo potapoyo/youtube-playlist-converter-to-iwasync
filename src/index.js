@@ -103,12 +103,10 @@ export default {
 	  }
 	</style>
 	<link rel=”icon” href=“https://assets.potapoyo.com/img/yt-to-is3/favicon.ico”>
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta property="og:title" content="YouTubeのプレイリストをiwaSync3の.jsonに変換" />
-	<meta property="og:description" content="YouTubeのプレイリストをiwaSync3の.jsonに変換します" />
 	<meta property="og:url" content="https://yt-to-is3.potapoyo.com/" />
 	<meta property="og:image" content="https://assets.potapoyo.com/img/yt-to-is3/ogp.webp" />
-	<meta property="og:image:width" content="" />
-	<meta property="og:image:height" content="" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="" />
 	<meta property="og:locale" content="ja_JP" />
