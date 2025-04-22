@@ -87,6 +87,8 @@ export default {
   <head>
 	<meta charset="UTF-8">
 	<title>YouTubeのプレイリストをiwaSync3の.jsonに変換</title>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3876032587960938"
+     crossorigin="anonymous"></script>
 	<style>
 	  body { font-family: Arial, sans-serif; max-width: 1024px; margin: 2rem auto; padding: 0 1rem; }
 	  input[type="text"] { width: 100%; padding: 0.5rem; margin: 0.5rem 0; }
