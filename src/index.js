@@ -111,7 +111,7 @@ export default {
 	<meta property="og:image:height" content="" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="" />
-	<meta property="og:locale" content="ja_JP" />\^
+	<meta property="og:locale" content="ja_JP" />
   </head>
   <body>
 	<h1>YouTubeのプレイリストをiwaSync3の.jsonに変換</h1>
