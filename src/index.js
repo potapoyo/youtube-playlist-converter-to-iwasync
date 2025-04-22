@@ -113,8 +113,8 @@ export default {
 	</label>
 	<br>
 	<div class="mode-radio-group">
-	  <label><input type="radio" name="mode" value="0" checked> Videoモード</label>
-	  <label><input type="radio" name="mode" value="1"> Liveモード</label>
+	  <label><input type="radio" name="mode" value="0"> Videoモード</label>
+	  <label><input type="radio" name="mode" value="1" checked> Liveモード</label>
 	</div>
 	<button onclick="convert()">JSONを生成</button>
 	<div id="loading" class="loading">処理中...</div>
