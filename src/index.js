@@ -117,6 +117,10 @@ export default {
 	<h1>YouTubeのプレイリストをiwaSync3の.jsonに変換</h1>
 	[ ここに広告を置きたい ]<br>
 	<a href="https://www.amazon.jp/hz/wishlist/ls/24EL6T1M89S5L?ref_=wl_share" target="_blank">なにかAmazon で買ってくれるとうれしいです。</a><br>
+	<br>
+	YouTubeのプレイリストURLを下記欄に入れて、「JSONを生成」をクリックしてください。<br>
+	生成されたJSONは、iwaSync3の「★プレイリストをjsonファイルから読み込み」から読み込むことができます。<br>
+	<br>
 	<input type="text" id="playlistUrl" placeholder="YouTubeプレイリストのURLを貼り付けてください">
 	<label class="nowrap-label">
 	  <input type="checkbox" id="ascending"> 昇順で並び替え
