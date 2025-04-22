@@ -107,8 +107,7 @@ export default {
 	<meta property="og:title" content="YouTubeのプレイリストをiwaSync3の.jsonに変換" />
 	<meta property="og:url" content="https://yt-to-is3.potapoyo.com/" />
 	<meta property="og:image" content="https://assets.potapoyo.com/img/yt-to-is3/ogp.webp" />
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="" />
+	<meta property="og:site_name" content="ぽたぽよドットコム" />
 	<meta property="og:locale" content="ja_JP" />
   </head>
   <body>
