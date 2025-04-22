@@ -105,7 +105,7 @@ export default {
   </head>
   <body>
 	<h1>YouTubeのプレイリストをiwaSync3の.jsonに変換</h1>
-	[ここに広告を置きたい]<br>
+	[ ここに広告を置きたい ]<br>
 	<a href="https://www.amazon.jp/hz/wishlist/ls/24EL6T1M89S5L?ref_=wl_share" target="_blank">なにかAmazon で買ってくれるとうれしいです。</a><br>
 	<input type="text" id="playlistUrl" placeholder="YouTubeプレイリストのURLを貼り付けてください">
 	<label class="nowrap-label">
