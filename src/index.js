@@ -120,7 +120,13 @@ export default {
 	<title>YouTubeのプレイリストをiwaSync3・VizvidのJSONに変換</title>
 	<style>
 	  body { font-family: Arial, sans-serif; max-width: 1024px; margin: 2rem auto; padding: 0 1rem; }
-	  input[type="text"] { width: 100%; padding: 0.5rem; margin: 0.5rem 0; }
+	  input[type="text"], input[type="number"], select {
+        box-sizing: border-box; display: block; width: 100%; padding: 0.5rem; margin-top: 0.5rem;
+      }
+      .form-item { margin-bottom: 1lh; }
+      fieldset { box-sizing: border-box; width: 100%; min-width: 0; margin: 0 0 1lh; padding: 1rem; }
+      fieldset p { margin: 0.5rem 0 0; }
+      .mode-radio-group { flex-wrap: wrap; }
 	  button { background: #007bff; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; }
 	  .loading { display: none; color: #666; margin-top: 1rem; }
 	  label.nowrap-label { white-space: nowrap; display: inline-block; vertical-align: middle; }
@@ -148,18 +154,23 @@ export default {
 	YouTubeのプレイリストURLを下記欄に入れて、「JSONを生成」をクリックしてください。<br>
 	iwaSync3用のJSONは「★プレイリストをjsonファイルから読み込み」、Vizvid用のJSONはVizvidのプレイリストとして読み込んでください。<br>
 	<br>
+	<div class="form-item">
 	<label for="playlistUrl">YouTubeプレイリストURL</label>
 	<input type="text" id="playlistUrl" placeholder="YouTubeプレイリストのURLを貼り付けてください">
+	</div>
+	<div class="form-item">
 	<label class="nowrap-label">
 	  <input type="checkbox" id="ascending"> 昇順で並び替え
 	</label>
-	<br>
+	</div>
+	<div class="form-item">
 	<label for="format">出力形式</label>
     <select id="format" onchange="updateOptions()">
       <option value="iwasync">iwaSyncのみ</option>
       <option value="vizvid">Vizvidのみ</option>
       <option value="both">両方（JSONファイルを2つ生成）</option>
     </select>
+    </div>
     <fieldset id="iwasyncOptions">
     <legend>iwaSync用オプション</legend>
     <div class="mode-radio-group">
@@ -169,13 +180,19 @@ export default {
 	</fieldset>
     <fieldset id="vizvidOptions" hidden>
       <legend>Vizvid用オプション</legend>
+      <div class="form-item">
       <label for="playlistTitle">プレイリスト名</label>
       <input type="text" id="playlistTitle" placeholder="YouTubeプレイリスト" maxlength="200">
+      </div>
+      <div class="form-item">
       <label for="playerIndex">プレイヤー番号（playerIndex）</label>
       <input type="number" id="playerIndex" value="0" min="0" step="1" aria-describedby="playerHelp">
       <p id="playerHelp">0は見本と同じ設定です。別の番号を使う場合は、使用するワールドのVizvid設定に合わせてください。</p>
+      </div>
+      <div>
       <label><input type="checkbox" id="questSameUrl"> Quest用URLにも同じYouTube URLを設定する</label>
       <p>チェックしない場合、Quest用URLは見本と同じ空欄になります。Questでの再生可否はワールドの設定に依存します。</p>
+      </div>
     </fieldset>
     <button id="convertButton" onclick="convert()">JSONを生成</button>
     <p id="error" role="alert"></p>
@@ -237,11 +254,17 @@ export default {
 		  }
 
           const data = await response.json();
+          const now = new Date();
+          const filenamePrefix = String(now.getFullYear()) +
+            [now.getMonth() + 1, now.getDate()]
+              .map(value => String(value).padStart(2, '0')).join('') + '_' +
+            [now.getHours(), now.getMinutes()]
+              .map(value => String(value).padStart(2, '0')).join('') + '_';
           if (format === 'both') {
-            data.files.forEach(file => addDownload(file.filename, file.data));
+            data.files.forEach(file => addDownload(filenamePrefix + file.filename, file.data));
             // Keep two explicit links: browsers may block multiple automatic downloads.
           } else {
-            addDownload(format === 'vizvid' ? 'vizvid_playlist.json' : 'playlist.json', data).click();
+            addDownload(filenamePrefix + (format === 'vizvid' ? 'vizvid_playlist.json' : 'playlist.json'), data).click();
           }
 
 		} catch (error) {

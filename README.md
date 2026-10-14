@@ -10,6 +10,8 @@ YouTubeのプレイリストを、iwaSync3・Vizvidで読み込めるJSONに変�
 
 単一形式の場合はJSONをダウンロードします。「両方」の場合は、一度のプレイリスト取得で2つのJSONを生成し、画面の各リンクからダウンロードできます。
 
+ダウンロード名の先頭には、生成時の端末の日時を `yyyymmdd_HHMM_` 形式で付けます（例: `20261014_1445_vizvid_playlist.json`）。「両方」で生成した2ファイルには同じ日時が付きます。
+
 - iwaSync: Video / Liveモードを選択できます。既存の `{ "tracks": [...] }` 形式です。
 - Vizvid: プレイリスト名、0以上のプレイヤー番号（`playerIndex`）、Quest用URLに同じYouTube URLを設定するかを選択できます。プレイヤー番号の意味はワールドのVizvid設定に合わせてください。
 - Vizvidの初期値: プレイリスト名は「YouTubeプレイリスト」、`playerIndex` は `0`、`urlForQuest` は空文字です。出力は `[{ "title": "...", "entries": [...] }]` 形式です。
